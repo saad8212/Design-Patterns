@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Builder</title>
+</head>
+<body style="display:flex;align-items:center;justify-content:center;flex-direction: column;">
+    <h2 style="width:80%">The Builder pattern is used to create objects in "steps". Normally we will have 
+        functions or methods that add certain properties or methods to our object.
+        The cool thing about this pattern is that we separate the creation of properties and methods 
+        into different entities.
+        If we had a class or a factory function, the object we instantiate will always have all the properties 
+        and methods declared in that class/factory. But using the builder pattern, we can create an object and
+         apply to  it only the "steps" we need, which is a more flexible approach.
+         It 's component based pattern in which we make final object by dividing it into different steps/components
+         in below example, we have made an component for name and age,,, other for height and at the end we have 
+         build this one.'
+    </h2>
+
+<script>
+    console.log("Builder Pattern");
+    let Person = function(name, age, height){
+        this.name = name,
+        this.age = age,
+        this.height = height
+    }
+
+    const BuilderFunc = function(name, age) {
+        this.name = name,
+        this.age = age,
+        this.setHeight = function (height) { //These are sub parts and we make the whole object by different steps
+            this.height = height;
+            return this;
+        }
+        this.build = function() {
+            return new Person (this.age, this.height, this.name);
+        }
+    }
+    const emp1 = new BuilderFunc("Ali", 34).setHeight(5.6).build();
+    console.log(emp1);
+</script>    
+</body>
+</html>
