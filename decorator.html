@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorator Pattern</title>
+</head>
+<body style="display: flex;justify-content:center; flex-direction: column; align-items: center;">
+    <h2 style="width: 60%;">Decorator Pattern</h2><br>
+    <h3 style="width:60%">
+        Decorator pattern allows a user to add new functionality to an existing object without altering its structure. This type of design pattern comes under structural pattern as this pattern acts as a wrapper to existing class.
+        This pattern creates a decorator class which wraps the original class and provides additional functionality keeping class methods signature intact.
+        We are demonstrating the use of decorator pattern via following example in which we will decorate a shape with some color without alter shape class.
+        <br/><br/>
+        The Decorator pattern extends (decorates) an object’s behavior dynamically. The ability to add new behavior at runtime is accomplished by a Decorator object which ‘wraps itself’ around the original object. Multiple decorators can add or override functionality to the original object.
+        <br/><br/>
+        Decorator pattern” is a structural type pattern that adds new features without modifying existing code structure, which allow not to break old functionality.
+        This pattern will be very useful if you are working on a legacy app, or if you need to add some new functionality to sealed classes (third-party library), or if you want to follow “Single responsibility principle” and “Open Closed Principle” in your current app.
+        
+    </h3>
+
+
+<script>
+    class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return 'I have a ' + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+class Color extends Model {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+
+let myCar = new Model("Ford", "Mustang");
+let myCar2 = new Color("Buggati", "Red");
+console.log(myCar2.show(), myCar.show()); 
+</script>
+
+    
+</body>
+</html>
