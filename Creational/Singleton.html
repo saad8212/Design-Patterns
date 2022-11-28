@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singleton Pattern</title>
+</head>
+<body style="display:flex;align-items:center;justify-content:center;flex-direction: column;">
+    <h2 style="width:80%; text-align:left">Singleton contains only one object which can not be modified, added or removed....it contains only a single object 
+        mostly it contains a configuration data of app, it is immutable and does'nt allow any other to modify 
+        it or recreate it
+    </h2>
+    <h1>Example:</h1>
+    <p style="width:50%">
+        First create an IIF and assign it to a variable<br><br>
+        var Singleton = (function(){
+            var config;
+            function initializeConfiguration (data) {
+                this.name = data.name;
+                this.age = data.age
+            }
+            return {
+                getName:function (data) {
+                    if(config === undefined){
+                        config = new initializeConfiguration(data);
+                    }
+                    return config;
+                }
+            }
+        })()
+        now we will create instances, or modify but it will not allow
+        var config1 = Singleton.getName({name:"abcd", age:123}); //initializeConfig {name: 'abcd', age: 123}
+        var config2 = Singleton.getName({name:"abcdef", age:14}); //initializeConfig {name: 'abcd', age: 123}
+
+    </p>
+
+
+
+    <script src = "patterns.js"></script>      
+</body>
+</html>
